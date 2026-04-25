@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none';">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Biotechnology researcher portfolio — genomics, synthetic biology, molecular medicine.">
+<title>BioPortfolio — Biotechnology Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #070d0a;
+  --surface: #0d1a14;
+  --card:    rgba(255,255,255,0.04);
+  --border:  rgba(62,207,142,0.12);
+  --border2: rgba(255,255,255,0.07);
+  --accent:  #3ecf8e;
+  --text:    #e2ede8;
+  --muted:   rgba(255,255,255,0.38);
+  --mono:    'DM Mono', monospace;
+  --serif:   'DM Serif Display', serif;
+  --sans:    'Inter', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);width:calc(100% - 3rem);max-width:1080px;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.75rem;background:rgba(7,13,10,.75);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:50px;box-shadow:0 4px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(62,207,142,.08)}
+.logo{font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;white-space:nowrap}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:500;letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:9rem 5rem 5rem;position:relative;overflow:hidden}
+.hero-glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 80% 40%,rgba(62,207,142,.11) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 10% 80%,rgba(26,92,66,.14) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(62,207,142,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(62,207,142,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 100%)}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;background:rgba(62,207,142,.08);border:1px solid rgba(62,207,142,.22);padding:.38rem 1rem;border-radius:50px;margin-bottom:2rem}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4.8rem);line-height:1.06;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+h1 em{color:var(--accent);font-style:italic}
+h1 .dim{color:rgba(255,255,255,.4)}
+.hero-sub{font-size:1rem;line-height:1.8;color:var(--muted);max-width:460px;margin-bottom:2.5rem;font-weight:300}
+.cta-row{display:flex;gap:.85rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.75rem;border-radius:50px;font-size:.875rem;font-weight:500;letter-spacing:.03em;text-decoration:none;cursor:pointer;border:none;transition:transform .2s,box-shadow .3s;font-family:var(--sans)}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--accent);color:#050e09}
+.btn-solid:hover{box-shadow:0 0 30px rgba(62,207,142,.4)}
+.btn-ghost{background:rgba(255,255,255,.05);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:rgba(62,207,142,.4);color:var(--accent)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border2)}
+.stat-num{font-family:var(--serif);font-size:2.2rem;color:#fff;display:block;line-height:1}
+.stat-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:.35rem}
+.hero-visual{position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
+.mol-wrap{width:360px;height:360px}
+.mol-wrap svg{width:100%;height:100%}
+
+/* SECTIONS */
+section{padding:6rem 5rem}
+.section-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:.6rem}
+h2{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);color:#fff;line-height:1.15;margin-bottom:.85rem}
+.section-lead{color:var(--muted);max-width:520px;line-height:1.8;font-weight:300}
+
+/* ABOUT */
+.about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:center;margin-top:3.5rem}
+.about-img{aspect-ratio:4/5;background:linear-gradient(150deg,#1b5e42 0%,#072214 100%);border-radius:20px;position:relative;overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 64px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center}
+.about-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(62,207,142,.08) 0%,transparent 70%)}
+.about-placeholder{font-size:5rem;opacity:.18}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1.1rem;font-size:.97rem}
+.skills-wrap{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-pill{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--accent);border:1px solid rgba(62,207,142,.18);background:rgba(62,207,142,.06);padding:.4rem .9rem;border-radius:50px;text-transform:uppercase;transition:background .2s,border-color .2s}
+.skill-pill:hover{background:rgba(62,207,142,.13);border-color:rgba(62,207,142,.35)}
+
+/* RESEARCH */
+.research{background:var(--bg)}
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
+.r-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem;transition:border-color .3s,transform .3s,box-shadow .3s}
+.r-card:hover{border-color:rgba(62,207,142,.35);transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.r-icon{font-size:1.8rem;margin-bottom:1.2rem}
+.r-card h3{font-family:var(--serif);font-size:1.25rem;color:#fff;margin-bottom:.6rem}
+.r-card p{font-size:.875rem;color:var(--muted);line-height:1.75}
+.r-tag{display:inline-block;margin-top:1.5rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--accent);background:rgba(62,207,142,.08);border:1px solid rgba(62,207,142,.18);padding:.25rem .65rem;border-radius:50px;text-transform:uppercase}
+
+/* PUBLICATIONS */
+.publications{background:var(--surface)}
+.pub-list{display:flex;flex-direction:column;gap:.85rem;margin-top:3.5rem}
+.pub-card{display:grid;grid-template-columns:52px 1fr auto;gap:1.5rem;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.75rem;transition:border-color .2s,transform .2s}
+.pub-card:hover{border-color:rgba(62,207,142,.28);transform:translateX(4px)}
+.pub-year{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.1em;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.pub-info h4{font-size:.95rem;font-weight:500;color:#fff;margin-bottom:.3rem;line-height:1.45}
+.pub-info p{font-size:.8rem;color:var(--muted)}
+.pub-status{font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;padding:.3rem .75rem;border-radius:50px;white-space:nowrap;border:1px solid;text-transform:uppercase}
+.pub-status.published{color:#86efac;border-color:rgba(134,239,172,.25);background:rgba(134,239,172,.07)}
+.pub-status.review{color:#93c5fd;border-color:rgba(147,197,253,.25);background:rgba(147,197,253,.07)}
+
+/* REELS */
+.reels{background:var(--bg)}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
+.reel-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer}
+.reel-card:hover{transform:translateY(-8px);box-shadow:0 28px 56px rgba(0,0,0,.45),0 0 0 1px rgba(62,207,142,.15);border-color:rgba(62,207,142,.25)}
+.reel-thumb{width:100%;aspect-ratio:9/16;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.reel-thumb-content{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.reel-thumb-emoji{font-size:2.5rem}
+.reel-thumb-hint{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.15em;text-transform:uppercase}
+.reel-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .25s}
+.reel-card:hover .reel-overlay{opacity:1}
+.play-btn{width:52px;height:52px;border-radius:50%;background:rgba(62,207,142,.92);display:flex;align-items:center;justify-content:center;font-size:1.2rem;padding-left:3px;box-shadow:0 0 30px rgba(62,207,142,.5)}
+.reel-cat-badge{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;background:rgba(62,207,142,.9);color:#050e09;padding:.25rem .6rem;border-radius:50px;text-transform:uppercase;font-weight:500}
+.reel-dur-badge{position:absolute;bottom:10px;right:10px;font-family:var(--mono);font-size:.65rem;background:rgba(0,0,0,.65);color:#fff;padding:.2rem .5rem;border-radius:4px;letter-spacing:.05em}
+.reel-info{padding:1.1rem 1.25rem 1.25rem}
+.reel-info h4{font-size:.9rem;font-weight:500;color:#fff;margin-bottom:.35rem;line-height:1.4}
+.reel-info p{font-size:.78rem;color:var(--muted);line-height:1.6}
+.reel-meta{display:flex;gap:1rem;margin-top:.7rem}
+.reel-meta span{font-family:var(--mono);font-size:.66rem;color:var(--muted)}
+.reel-add{border:1px dashed rgba(62,207,142,.2);background:rgba(62,207,142,.02);border-radius:18px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;min-height:360px;transition:border-color .2s,background .2s}
+.reel-add:hover{border-color:rgba(62,207,142,.4);background:rgba(62,207,142,.05)}
+.reel-add-plus{font-size:2rem;color:rgba(62,207,142,.4)}
+.reel-add-text{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);text-align:center;line-height:1.7;text-transform:uppercase}
+
+/* SOCIAL MEDIA */
+.social{background:var(--surface)}
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
+.social-card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem 1.75rem;display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s}
+.social-card:hover{transform:translateY(-6px)}
+.social-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.social-card:hover::before{opacity:1}
+.sc-ig::before{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(253,29,29,.1),transparent 70%)}
+.sc-ig:hover{border-color:rgba(253,29,29,.25);box-shadow:0 20px 48px rgba(253,29,29,.08)}
+.sc-yt::before{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,0,0,.1),transparent 70%)}
+.sc-yt:hover{border-color:rgba(255,0,0,.25);box-shadow:0 20px 48px rgba(255,0,0,.08)}
+.sc-li::before{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,119,181,.12),transparent 70%)}
+.sc-li:hover{border-color:rgba(0,119,181,.28);box-shadow:0 20px 48px rgba(0,119,181,.08)}
+.sc-tw::before{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(29,161,242,.1),transparent 70%)}
+.sc-tw:hover{border-color:rgba(29,161,242,.25);box-shadow:0 20px 48px rgba(29,161,242,.08)}
+.sc-gh::before{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(110,84,148,.12),transparent 70%)}
+.sc-gh:hover{border-color:rgba(110,84,148,.28);box-shadow:0 20px 48px rgba(110,84,148,.08)}
+.sc-rg::before{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,204,187,.1),transparent 70%)}
+.sc-rg:hover{border-color:rgba(0,204,187,.25);box-shadow:0 20px 48px rgba(0,204,187,.08)}
+.soc-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.5rem;position:relative;z-index:1}
+.sc-ig .soc-icon{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+.sc-yt .soc-icon{background:#ff0000}
+.sc-li .soc-icon{background:#0077b5}
+.sc-tw .soc-icon{background:#1da1f2}
+.sc-gh .soc-icon{background:#1b1f23;border:1px solid rgba(255,255,255,.1)}
+.sc-rg .soc-icon{background:#00ccbb}
+.soc-name{font-size:.9rem;font-weight:600;color:#fff;position:relative;z-index:1}
+.soc-handle{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.06em;position:relative;z-index:1}
+.soc-meta{margin-top:auto;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.06);width:100%;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.soc-count{font-family:var(--mono);font-size:.75rem;color:var(--accent);font-weight:500}
+.soc-arrow{font-size:.85rem;color:var(--muted);transition:color .2s,transform .2s}
+.social-card:hover .soc-arrow{color:var(--accent);transform:translate(3px,-3px)}
+
+/* CONTACT */
+.contact{background:var(--bg)}
+.contact-box{max-width:620px;margin:3.5rem auto 0;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:24px;padding:3rem;box-shadow:0 32px 64px rgba(0,0,0,.3)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{margin-bottom:1.25rem}
+.form-label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:.45rem}
+.form-input{width:100%;padding:.8rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:#fff;font-family:var(--sans);font-size:.9rem;border-radius:10px;outline:none;transition:border-color .2s,background .2s}
+.form-input::placeholder{color:rgba(255,255,255,.18)}
+.form-input:focus{border-color:rgba(62,207,142,.4);background:rgba(62,207,142,.03)}
+textarea.form-input{resize:vertical;min-height:110px}
+select.form-input option{background:#0d1a14}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,10,8,.9);backdrop-filter:blur(10px);align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#0d1a14;border:1px solid var(--border);border-radius:20px;width:90%;max-width:420px;padding:2rem;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.modal h3{font-family:var(--serif);font-size:1.3rem;color:#fff;margin-bottom:1.5rem}
+.modal-close{position:absolute;top:1.1rem;right:1.1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--muted);font-size:1rem;cursor:pointer;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.modal-close:hover{background:rgba(255,255,255,.12);color:#fff}
+.modal-actions{display:flex;gap:.75rem;margin-top:1.5rem}
+.modal-cancel{padding:.75rem 1.25rem;background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--muted);border-radius:50px;font-family:var(--sans);font-size:.875rem;cursor:pointer;transition:color .2s}
+.modal-cancel:hover{color:#fff}
+.modal-submit{flex:1;padding:.75rem;background:var(--accent);color:#050e09;border:none;border-radius:50px;font-family:var(--sans);font-weight:600;font-size:.875rem;cursor:pointer;transition:box-shadow .2s}
+.modal-submit:hover{box-shadow:0 0 24px rgba(62,207,142,.4)}
+.field-error{color:#f87171;font-size:.72rem;margin-top:.3rem;display:none}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border2);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+.footer-socials{display:flex;gap:.6rem}
+.footer-soc{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.9rem;transition:background .2s,border-color .2s,transform .2s}
+.footer-soc:hover{background:rgba(62,207,142,.12);border-color:rgba(62,207,142,.3);transform:translateY(-2px)}
+.footer-built{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+.footer-built span{color:var(--accent)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fu{opacity:0;animation:fadeUp .8s ease forwards}
+.fu-1{animation-delay:.1s}.fu-2{animation-delay:.25s}.fu-3{animation-delay:.4s}.fu-4{animation-delay:.55s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{width:calc(100% - 2rem);padding:.75rem 1.25rem}
+  .nav-links{gap:1.25rem}
+  .hero{grid-template-columns:1fr;padding:7rem 2rem 3rem}
+  .hero-visual{display:none}
+  section{padding:4.5rem 2rem}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .research-grid,.social-grid{grid-template-columns:1fr 1fr}
+  .reels-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  footer{padding:2rem;flex-direction:column;text-align:center;align-items:center}
+}
+@media(max-width:560px){
+  .nav-links{display:none}
+  .research-grid,.social-grid,.reels-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">[ Bio · Portfolio ]</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#reels">Reels</a></li>
+    <li><a href="#social">Social</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge fu fu-1"><span class="hero-dot"></span>Biotechnology Researcher</div>
+    <h1 class="fu fu-2">Decoding Life <em>at the</em><br><span class="dim">Molecular Level</span></h1>
+    <p class="hero-sub fu fu-3">Passionate biotechnologist exploring genomics, synthetic biology, and molecular medicine — turning complex science into real-world solutions.</p>
+    <div class="cta-row fu fu-4">
+      <a href="#research" class="btn btn-solid">View Research →</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+    <div class="hero-stats fu fu-4">
+      <div><span class="stat-num">4+</span><span class="stat-label">Years Exp.</span></div>
+      <div><span class="stat-num">12+</span><span class="stat-label">Publications</span></div>
+      <div><span class="stat-num">3</span><span class="stat-label">Research Areas</span></div>
+    </div>
+  </div>
+  <div class="hero-visual fu fu-3">
+    <div class="mol-wrap">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="150" stroke="rgba(62,207,142,.06)" stroke-width="1" stroke-dasharray="3 9"/>
+        <circle cx="200" cy="200" r="100" stroke="rgba(62,207,142,.1)" stroke-width="1" stroke-dasharray="4 6"/>
+        <circle cx="200" cy="130" r="5" fill="#3ecf8e"/>
+        <circle cx="260" cy="165" r="5" fill="#3ecf8e" opacity=".8"/>
+        <circle cx="260" cy="235" r="5" fill="#3ecf8e" opacity=".6"/>
+        <circle cx="200" cy="270" r="5" fill="#3ecf8e"/>
+        <circle cx="140" cy="235" r="5" fill="#3ecf8e" opacity=".7"/>
+        <circle cx="140" cy="165" r="5" fill="#3ecf8e" opacity=".9"/>
+        <line x1="200" y1="200" x2="200" y2="130" stroke="#3ecf8e" stroke-width="1.2" opacity=".5"/>
+        <line x1="200" y1="200" x2="260" y2="165" stroke="#3ecf8e" stroke-width="1.2" opacity=".5"/>
+        <line x1="200" y1="200" x2="260" y2="235" stroke="#3ecf8e" stroke-width="1.2" opacity=".5"/>
+        <line x1="200" y1="200" x2="200" y2="270" stroke="#3ecf8e" stroke-width="1.2" opacity=".5"/>
+        <line x1="200" y1="200" x2="140" y2="235" stroke="#3ecf8e" stroke-width="1.2" opacity=".5"/>
+        <line x1="200" y1="200" x2="140" y2="165" stroke="#3ecf8e" stroke-width="1.2" opacity=".5"/>
+        <circle cx="200" cy="60" r="3.5" fill="#b8f5a0" opacity=".5"/>
+        <circle cx="316" cy="130" r="3.5" fill="#b8f5a0" opacity=".4"/>
+        <circle cx="316" cy="270" r="3.5" fill="#b8f5a0" opacity=".4"/>
+        <circle cx="200" cy="340" r="3.5" fill="#b8f5a0" opacity=".5"/>
+        <circle cx="84" cy="270" r="3.5" fill="#b8f5a0" opacity=".4"/>
+        <circle cx="84" cy="130" r="3.5" fill="#b8f5a0" opacity=".4"/>
+        <line x1="200" y1="130" x2="200" y2="60" stroke="#b8f5a0" stroke-width=".8" opacity=".25"/>
+        <line x1="260" y1="165" x2="316" y2="130" stroke="#b8f5a0" stroke-width=".8" opacity=".25"/>
+        <line x1="260" y1="235" x2="316" y2="270" stroke="#b8f5a0" stroke-width=".8" opacity=".25"/>
+        <line x1="200" y1="270" x2="200" y2="340" stroke="#b8f5a0" stroke-width=".8" opacity=".25"/>
+        <line x1="140" y1="235" x2="84" y2="270" stroke="#b8f5a0" stroke-width=".8" opacity=".25"/>
+        <line x1="140" y1="165" x2="84" y2="130" stroke="#b8f5a0" stroke-width=".8" opacity=".25"/>
+        <circle cx="300" cy="200" r="7" fill="#3ecf8e" opacity=".9">
+          <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="50" r="5" fill="#b8f5a0" opacity=".7">
+          <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="-360 200 200" dur="9s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="200" r="8" fill="none" stroke="#3ecf8e" stroke-width="1.5">
+          <animate attributeName="r" from="8" to="28" dur="2.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from=".8" to="0" dur="2.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="200" r="7" fill="#3ecf8e"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-eyebrow">About Me</p>
+  <h2>Where Science Meets Curiosity</h2>
+  <p class="section-lead">A dedicated researcher committed to bridging laboratory discoveries with real-world biotechnology applications.</p>
+  <div class="about-grid">
+    <div class="about-img"><div class="about-placeholder">👤</div></div>
+    <div class="about-text">
+      <p>I am a biotechnology professional with a deep passion for understanding life at the molecular level. My work sits at the intersection of genomics, cell biology, and applied biosciences.</p>
+      <p>Throughout my academic and research journey, I have developed expertise in laboratory techniques and computational tools that help unravel complex biological systems.</p>
+      <p>I am driven by the belief that science done rigorously and communicated clearly can genuinely improve lives — from developing better diagnostics to engineering novel therapeutic proteins.</p>
+      <div class="skills-wrap">
+        <span class="skill-pill">PCR & qPCR</span><span class="skill-pill">CRISPR-Cas9</span>
+        <span class="skill-pill">Cell Culture</span><span class="skill-pill">Bioinformatics</span>
+        <span class="skill-pill">Protein Purification</span><span class="skill-pill">Flow Cytometry</span>
+        <span class="skill-pill">Western Blot</span><span class="skill-pill">NGS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <p class="section-eyebrow">Research Focus</p>
+  <h2>Current Areas of Work</h2>
+  <p class="section-lead">Exploring three interconnected fields that define the future of biotechnology.</p>
+  <div class="research-grid">
+    <div class="r-card">
+      <div class="r-icon">🧬</div>
+      <h3>Genomics & Gene Editing</h3>
+      <p>Investigating CRISPR-based approaches to correct genetic mutations and study gene function using high-throughput sequencing technologies.</p>
+      <span class="r-tag">Active Research</span>
+    </div>
+    <div class="r-card">
+      <div class="r-icon">🦠</div>
+      <h3>Microbial Biotechnology</h3>
+      <p>Engineering microbial systems for production of biofuels, enzymes, and pharmaceutical compounds with improved efficiency.</p>
+      <span class="r-tag">Ongoing</span>
+    </div>
+    <div class="r-card">
+      <div class="r-icon">💊</div>
+      <h3>Molecular Medicine</h3>
+      <p>Developing diagnostic biomarkers and therapeutic protein candidates targeting inflammatory and metabolic disease pathways.</p>
+      <span class="r-tag">In Progress</span>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="publications" id="publications">
+  <p class="section-eyebrow">Publications</p>
+  <h2>Selected Research Papers</h2>
+  <p class="section-lead">Peer-reviewed contributions to journals in life sciences and biotechnology.</p>
+  <div class="pub-list">
+    <div class="pub-card">
+      <div class="pub-year">2024</div>
+      <div class="pub-info"><h4>CRISPR-Mediated Correction of Metabolic Pathway Flux in E. coli</h4><p>Journal of Synthetic Biology · Co-authored with Dept. of Molecular Engineering</p></div>
+      <span class="pub-status published">Published</span>
+    </div>
+    <div class="pub-card">
+      <div class="pub-year">2023</div>
+      <div class="pub-info"><h4>Next-Generation Sequencing Applications in Rare Disease Diagnostics</h4><p>Molecular Genetics & Genomics · Lead Author</p></div>
+      <span class="pub-status published">Published</span>
+    </div>
+    <div class="pub-card">
+      <div class="pub-year">2023</div>
+      <div class="pub-info"><h4>Enzyme Engineering for Improved Thermostability in Industrial Bioprocesses</h4><p>Applied Microbiology and Biotechnology · Contributing Author</p></div>
+      <span class="pub-status published">Published</span>
+    </div>
+    <div class="pub-card">
+      <div class="pub-year">2025</div>
+      <div class="pub-info"><h4>AI-Assisted Protein Folding Prediction for Drug Target Discovery</h4><p>Bioinformatics Advances · Under Review</p></div>
+      <span class="pub-status review">In Review</span>
+    </div>
+  </div>
+</section>
+
+<!-- REELS -->
+<section class="reels" id="reels">
+  <p class="section-eyebrow">Science Reels</p>
+  <h2>Biotech in 60 Seconds</h2>
+  <p class="section-lead">Short videos breaking down complex biotechnology concepts — from lab to life.</p>
+  <div class="reels-grid" id="reelsGrid">
+    <div class="reel-card">
+      <div class="reel-thumb" style="background:linear-gradient(160deg,#1a5c42,#050e09)">
+        <div class="reel-thumb-content"><span class="reel-thumb-emoji">🧬</span><span class="reel-thumb-hint">Watch</span></div>
+        <div class="reel-overlay"><div class="play-btn">▶</div></div>
+        <span class="reel-cat-badge">Genomics</span><span class="reel-dur-badge">0:58</span>
+      </div>
+      <div class="reel-info"><h4>What is CRISPR? Explained Simply</h4><p>How gene scissors work and why they could cure genetic diseases.</p><div class="reel-meta"><span>👁 24.3K</span><span>Jan 2025</span></div></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-thumb" style="background:linear-gradient(160deg,#0e4d3a,#030d07)">
+        <div class="reel-thumb-content"><span class="reel-thumb-emoji">🦠</span><span class="reel-thumb-hint">Watch</span></div>
+        <div class="reel-overlay"><div class="play-btn">▶</div></div>
+        <span class="reel-cat-badge">Microbiology</span><span class="reel-dur-badge">1:02</span>
+      </div>
+      <div class="reel-info"><h4>How Bacteria Make Insulin for Diabetics</h4><p>The fascinating story of recombinant DNA technology in medicine.</p><div class="reel-meta"><span>👁 18.7K</span><span>Feb 2025</span></div></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-thumb" style="background:linear-gradient(160deg,#1a3c2e,#040c09)">
+        <div class="reel-thumb-content"><span class="reel-thumb-emoji">🔬</span><span class="reel-thumb-hint">Watch</span></div>
+        <div class="reel-overlay"><div class="play-btn">▶</div></div>
+        <span class="reel-cat-badge">Lab Skills</span><span class="reel-dur-badge">0:45</span>
+      </div>
+      <div class="reel-info"><h4>PCR in 45 Seconds — Lab Basics</h4><p>The technique behind COVID testing and DNA fingerprinting visualized.</p><div class="reel-meta"><span>👁 31.2K</span><span>Mar 2025</span></div></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-thumb" style="background:linear-gradient(160deg,#25502e,#060d07)">
+        <div class="reel-thumb-content"><span class="reel-thumb-emoji">💊</span><span class="reel-thumb-hint">Watch</span></div>
+        <div class="reel-overlay"><div class="play-btn">▶</div></div>
+        <span class="reel-cat-badge">Medicine</span><span class="reel-dur-badge">1:15</span>
+      </div>
+      <div class="reel-info"><h4>mRNA Vaccines — How They Work</h4><p>Breaking down the science that changed modern immunology forever.</p><div class="reel-meta"><span>👁 42.5K</span><span>Apr 2025</span></div></div>
+    </div>
+    <div class="reel-card">
+      <div class="reel-thumb" style="background:linear-gradient(160deg,#163d30,#040c09)">
+        <div class="reel-thumb-content"><span class="reel-thumb-emoji">🎓</span><span class="reel-thumb-hint">Watch</span></div>
+        <div class="reel-overlay"><div class="play-btn">▶</div></div>
+        <span class="reel-cat-badge">Career</span><span class="reel-dur-badge">0:52</span>
+      </div>
+      <div class="reel-info"><h4>Day in the Life — Biotech Lab</h4><p>A peek inside a real research lab: experiments, failures, and breakthroughs.</p><div class="reel-meta"><span>👁 56.1K</span><span>Apr 2025</span></div></div>
+    </div>
+    <div class="reel-add" id="addReelBtn" role="button" tabindex="0" aria-label="Add new reel">
+      <div class="reel-add-plus">＋</div>
+      <div class="reel-add-text">Add New Reel<br>or Video Link</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section class="social" id="social">
+  <p class="section-eyebrow">Find Me Online</p>
+  <h2>Follow the Science</h2>
+  <p class="section-lead">Stay updated with my latest research, lab experiments, and science education content across platforms.</p>
+  <div class="social-grid">
+    <a href="#" class="social-card sc-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <div class="soc-icon">📸</div>
+      <div class="soc-name">Instagram</div>
+      <div class="soc-handle">@yourbiohandle</div>
+      <div class="soc-meta"><span class="soc-count">12.4K followers</span><span class="soc-arrow">↗</span></div>
+    </a>
+    <a href="#" class="social-card sc-yt" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <div class="soc-icon">▶️</div>
+      <div class="soc-name">YouTube</div>
+      <div class="soc-handle">BioTech Channel</div>
+      <div class="soc-meta"><span class="soc-count">8.1K subscribers</span><span class="soc-arrow">↗</span></div>
+    </a>
+    <a href="#" class="social-card sc-li" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <div class="soc-icon">💼</div>
+      <div class="soc-name">LinkedIn</div>
+      <div class="soc-handle">Your Name</div>
+      <div class="soc-meta"><span class="soc-count">3.2K connections</span><span class="soc-arrow">↗</span></div>
+    </a>
+    <a href="#" class="social-card sc-tw" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+      <div class="soc-icon">🐦</div>
+      <div class="soc-name">Twitter / X</div>
+      <div class="soc-handle">@yourhandle</div>
+      <div class="soc-meta"><span class="soc-count">5.7K followers</span><span class="soc-arrow">↗</span></div>
+    </a>
+    <a href="#" class="social-card sc-gh" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <div class="soc-icon">🖥️</div>
+      <div class="soc-name">GitHub</div>
+      <div class="soc-handle">yourgithub</div>
+      <div class="soc-meta"><span class="soc-count">Bio scripts & tools</span><span class="soc-arrow">↗</span></div>
+    </a>
+    <a href="#" class="social-card sc-rg" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">
+      <div class="soc-icon">🔬</div>
+      <div class="soc-name">ResearchGate</div>
+      <div class="soc-handle">Your Profile</div>
+      <div class="soc-meta"><span class="soc-count">12 publications</span><span class="soc-arrow">↗</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-eyebrow" style="text-align:center">Contact</p>
+  <h2 style="text-align:center">Let's Collaborate</h2>
+  <p class="section-lead" style="margin:0 auto;text-align:center">Open to research collaborations, internship inquiries, and academic partnerships.</p>
+  <div class="contact-box">
+    <div class="form-row">
+      <div class="form-group"><label class="form-label" for="c-name">Your Name</label><input class="form-input" type="text" id="c-name" placeholder="Dr. Jane Smith" maxlength="80" autocomplete="name"></div>
+      <div class="form-group"><label class="form-label" for="c-email">Email Address</label><input class="form-input" type="email" id="c-email" placeholder="you@institute.edu" maxlength="120" autocomplete="email"></div>
+    </div>
+    <div class="form-group"><label class="form-label" for="c-subject">Subject</label><input class="form-input" type="text" id="c-subject" placeholder="Research Collaboration Proposal" maxlength="120"></div>
+    <div class="form-group"><label class="form-label" for="c-msg">Message</label><textarea class="form-input" id="c-msg" placeholder="Tell me about your research interest or project..." maxlength="1000"></textarea></div>
+    <button class="btn btn-solid" id="contactBtn" style="width:100%;justify-content:center;border-radius:12px">Send Message →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 BioPortfolio · All rights reserved</span>
+  <div class="footer-socials">
+    <a href="#" class="footer-soc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+    <a href="#" class="footer-soc" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶️</a>
+    <a href="#" class="footer-soc" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">💼</a>
+    <a href="#" class="footer-soc" target="_blank" rel="noopener noreferrer" aria-label="Twitter">🐦</a>
+    <a href="#" class="footer-soc" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🖥️</a>
+  </div>
+  <span class="footer-built">Built with <span>♥</span> for science</span>
+</footer>
+
+<!-- REEL MODAL -->
+<div class="modal-overlay" id="reelModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <h3 id="modalTitle">Add New Reel</h3>
+    <div class="form-group"><label class="form-label" for="r-title">Video Title</label><input class="form-input" type="text" id="r-title" placeholder="e.g. How DNA Replication Works" maxlength="120" autocomplete="off"></div>
+    <div class="form-group"><label class="form-label" for="r-link">Video Link (https://)</label><input class="form-input" type="url" id="r-link" placeholder="https://www.instagram.com/reel/..." maxlength="500" autocomplete="off"><div class="field-error" id="r-link-err">Please enter a valid https:// URL</div></div>
+    <div class="form-group"><label class="form-label" for="r-desc">Description</label><textarea class="form-input" id="r-desc" placeholder="What does this reel explain?" maxlength="200" style="min-height:80px"></textarea></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label" for="r-cat">Category</label><select class="form-input" id="r-cat"><option>Genomics</option><option>Microbiology</option><option>Lab Skills</option><option>Medicine</option><option>Career</option><option>Other</option></select></div>
+      <div class="form-group"><label class="form-label" for="r-dur">Duration</label><input class="form-input" type="text" id="r-dur" placeholder="0:58" maxlength="8" autocomplete="off"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-cancel" id="modalCancel">Cancel</button>
+      <button class="modal-submit" id="modalSubmit">Add Reel ✦</button>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+function safeText(el,v){if(el)el.textContent=String(v)}
+function validUrl(s){if(!s)return true;try{return new URL(s).protocol==='https:'}catch{return false}}
+
+// Scroll fade-in
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.style.transition='opacity .7s ease,transform .7s ease';
+    e.target.style.opacity='1';e.target.style.transform='translateY(0)';
+    io.unobserve(e.target);
+  });
+},{threshold:.1});
+document.querySelectorAll('.r-card,.pub-card,.reel-card,.social-card,.about-text,.about-img').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';io.observe(el);
+});
+
+// Reel modal
+const CATS=['Genomics','Microbiology','Lab Skills','Medicine','Career','Other'];
+const EMOJI={Genomics:'🧬',Microbiology:'🦠','Lab Skills':'🔬',Medicine:'💊',Career:'🎓',Other:'🔭'};
+const BG={Genomics:'linear-gradient(160deg,#1a5c42,#050e09)',Microbiology:'linear-gradient(160deg,#0e4d3a,#030d07)','Lab Skills':'linear-gradient(160deg,#1a3c2e,#040c09)',Medicine:'linear-gradient(160deg,#25502e,#060d07)',Career:'linear-gradient(160deg,#163d30,#040c09)',Other:'linear-gradient(160deg,#2a3c30,#060d09)'};
+
+const modal=document.getElementById('reelModal');
+const addBtn=document.getElementById('addReelBtn');
+const linkErr=document.getElementById('r-link-err');
+
+function openModal(){modal.classList.add('open');document.getElementById('r-title').focus();document.addEventListener('keydown',onKey)}
+function closeModal(){modal.classList.remove('open');linkErr.style.display='none';document.removeEventListener('keydown',onKey);addBtn.focus()}
+function onKey(e){
+  if(e.key==='Escape'){closeModal();return}
+  if(e.key!=='Tab')return;
+  const els=[...modal.querySelectorAll('button,input,select,textarea')];
+  const first=els[0],last=els[els.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+}
+
+addBtn.addEventListener('click',openModal);
+addBtn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal()}});
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('modalCancel').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+
+document.getElementById('modalSubmit').addEventListener('click',()=>{
+  const title=document.getElementById('r-title').value.trim();
+  const link=document.getElementById('r-link').value.trim();
+  const desc=document.getElementById('r-desc').value.trim();
+  const cat=CATS.includes(document.getElementById('r-cat').value)?document.getElementById('r-cat').value:'Other';
+  const dur=/^\d{1,2}:\d{2}$/.test(document.getElementById('r-dur').value.trim())?document.getElementById('r-dur').value.trim():'1:00';
+  if(!title){document.getElementById('r-title').focus();return}
+  linkErr.style.display='none';
+  if(link&&!validUrl(link)){linkErr.style.display='block';document.getElementById('r-link').focus();return}
+
+  const grid=document.getElementById('reelsGrid');
+  const card=document.createElement('div');card.className='reel-card';card.style.opacity='0';card.style.transform='translateY(20px)';
+
+  const thumb=document.createElement('div');thumb.className='reel-thumb';thumb.style.background=BG[cat]||BG.Other;
+  const tc=document.createElement('div');tc.className='reel-thumb-content';
+  const te=document.createElement('span');te.className='reel-thumb-emoji';safeText(te,EMOJI[cat]||'🔭');
+  const th=document.createElement('span');th.className='reel-thumb-hint';safeText(th,'Watch');
+  tc.append(te,th);
+  const ov=document.createElement('div');ov.className='reel-overlay';
+  const pb=document.createElement('div');pb.className='play-btn';safeText(pb,'▶');ov.appendChild(pb);
+  const cb=document.createElement('span');cb.className='reel-cat-badge';safeText(cb,cat);
+  const db=document.createElement('span');db.className='reel-dur-badge';safeText(db,dur);
+  thumb.append(tc,ov,cb,db);
+
+  const info=document.createElement('div');info.className='reel-info';
+  const h4=document.createElement('h4');safeText(h4,title);
+  const p=document.createElement('p');safeText(p,desc||'Biotech reel — click to watch.');
+  const meta=document.createElement('div');meta.className='reel-meta';
+  const s1=document.createElement('span');safeText(s1,'👁 New');
+  const s2=document.createElement('span');safeText(s2,'2025');
+  meta.append(s1,s2);info.append(h4,p,meta);
+
+  if(link&&validUrl(link)){
+    const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';
+    a.style.cssText='display:inline-block;margin-top:.7rem;font-family:"DM Mono",monospace;font-size:.68rem;color:var(--accent);letter-spacing:.08em;';
+    safeText(a,'Open Link →');info.appendChild(a);
+  }
+  card.append(thumb,info);
+  grid.insertBefore(card,addBtn);
+  requestAnimationFrame(()=>{card.style.transition='opacity .5s ease,transform .5s ease';card.style.opacity='1';card.style.transform='translateY(0)'});
+  io.observe(card);
+  ['r-title','r-link','r-desc','r-dur'].forEach(id=>document.getElementById(id).value='');
+  closeModal();
+});
+
+// Contact form
+document.getElementById('contactBtn').addEventListener('click',function(){
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const subj=document.getElementById('c-subject').value.trim();
+  const msg=document.getElementById('c-msg').value.trim();
+  if(!name||!email||!subj||!msg){this.textContent='⚠ Please fill all fields';this.style.background='#92400e';setTimeout(()=>{this.textContent='Send Message →';this.style.background=''},2500);return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){this.textContent='⚠ Invalid email';this.style.background='#92400e';setTimeout(()=>{this.textContent='Send Message →';this.style.background=''},2500);return}
+  this.textContent='✓ Message Received!';this.style.background='#166534';this.disabled=true;
+  setTimeout(()=>{this.textContent='Send Message →';this.style.background='';this.disabled=false;['c-name','c-email','c-subject','c-msg'].forEach(id=>document.getElementById(id).value='')},3000);
+});
+</script>
+</body>
+</html>
